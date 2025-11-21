@@ -26,8 +26,9 @@ const LandingPage: React.FC = () => {
             <section className="relative overflow-hidden">
                 {/* Animated Background */}
                 <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-500/20 rounded-full blur-3xl animate-pulse"></div>
-                    <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-green-500/20 rounded-full blur-3xl animate-float"></div>
+                    <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
                 </div>
 
                 <div className="container relative z-10 mx-auto px-6 py-24 md:py-32">
@@ -189,43 +190,119 @@ const LandingPage: React.FC = () => {
                 </div>
             </section>
 
+            {/* FAQ Section */}
+            <section className="py-24 bg-white">
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                            Frequently Asked Questions
+                        </h2>
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                            Everything you need to know about carbon offset NFTs
+                        </p>
+                    </div>
+
+                    <div className="max-w-3xl mx-auto space-y-4">
+                        {[
+                            {
+                                q: 'What are carbon offset NFTs?',
+                                a: 'Carbon offset NFTs are blockchain-based tokens that represent verified carbon credits. Each NFT proves ownership of a specific amount of carbon offset, making the process transparent and tamper-proof.',
+                            },
+                            {
+                                q: 'How does blockchain verification work?',
+                                a: 'Every carbon credit is minted as an NFT on the Hedera network, creating an immutable record of ownership and retirement. This ensures complete transparency and prevents double-counting.',
+                            },
+                            {
+                                q: 'Can I retire my carbon credits?',
+                                a: 'Yes! When you retire credits, the NFT is permanently marked as retired on the blockchain, and you receive a verifiable certificate of your environmental impact.',
+                            },
+                            {
+                                q: 'What makes Hedera the right choice?',
+                                a: 'Hedera offers fast transactions, low fees, and is carbon-negative, making it the perfect blockchain for environmental applications.',
+                            },
+                        ].map((faq, index) => (
+                            <Card key={index} hover padding="lg" className="cursor-pointer">
+                                <h3 className="text-xl font-bold text-gray-900 mb-2">{faq.q}</h3>
+                                <p className="text-gray-600">{faq.a}</p>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Newsletter Section */}
+            <section className="py-16 bg-gradient-to-r from-green-500 to-blue-500">
+                <div className="container mx-auto px-6 text-center">
+                    <h3 className="text-3xl font-bold text-white mb-4">
+                        Stay Updated
+                    </h3>
+                    <p className="text-white/90 mb-6 max-w-xl mx-auto">
+                        Get the latest news about carbon offsetting and blockchain technology
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+                        />
+                        <Button variant="secondary" size="lg" className="bg-white text-green-600 hover:bg-gray-100">
+                            Subscribe
+                        </Button>
+                    </div>
+                </div>
+            </section>
+
             {/* Footer */}
             <footer className="bg-slate-900 text-white py-12">
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div>
-                            <h3 className="text-2xl font-bold mb-4">ImpactMint</h3>
-                            <p className="text-gray-400">
+                            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+                                ImpactMint
+                            </h3>
+                            <p className="text-gray-400 mb-4">
                                 Blockchain-verified carbon offsets for a sustainable future
                             </p>
+                            <div className="flex gap-3">
+                                {['twitter', 'github', 'linkedin'].map((social) => (
+                                    <a
+                                        key={social}
+                                        href={`#${social}`}
+                                        className="w-10 h-10 rounded-full bg-gray-800 hover:bg-green-600 flex items-center justify-center transition-colors"
+                                        aria-label={social}
+                                    >
+                                        <span className="text-sm">🔗</span>
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                         <div>
                             <h4 className="font-semibold mb-4">Platform</h4>
                             <ul className="space-y-2 text-gray-400">
-                                <li><a href="/dashboard" className="hover:text-white transition">Dashboard</a></li>
-                                <li><a href="/projects" className="hover:text-white transition">Projects</a></li>
-                                <li><a href="/marketplace" className="hover:text-white transition">Marketplace</a></li>
+                                <li><a href="/dashboard" className="hover:text-green-400 transition">Dashboard</a></li>
+                                <li><a href="/projects" className="hover:text-green-400 transition">Projects</a></li>
+                                <li><a href="/marketplace" className="hover:text-green-400 transition">Marketplace</a></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-semibold mb-4">Resources</h4>
                             <ul className="space-y-2 text-gray-400">
-                                <li><a href="/docs" className="hover:text-white transition">Documentation</a></li>
-                                <li><a href="/api" className="hover:text-white transition">API</a></li>
-                                <li><a href="/support" className="hover:text-white transition">Support</a></li>
+                                <li><a href="/docs" className="hover:text-green-400 transition">Documentation</a></li>
+                                <li><a href="/api" className="hover:text-green-400 transition">API</a></li>
+                                <li><a href="/support" className="hover:text-green-400 transition">Support</a></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-semibold mb-4">Company</h4>
                             <ul className="space-y-2 text-gray-400">
-                                <li><a href="/about" className="hover:text-white transition">About</a></li>
-                                <li><a href="/blog" className="hover:text-white transition">Blog</a></li>
-                                <li><a href="/contact" className="hover:text-white transition">Contact</a></li>
+                                <li><a href="/about" className="hover:text-green-400 transition">About</a></li>
+                                <li><a href="/blog" className="hover:text-green-400 transition">Blog</a></li>
+                                <li><a href="/contact" className="hover:text-green-400 transition">Contact</a></li>
                             </ul>
                         </div>
                     </div>
                     <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                        <p>&copy; 2025 ImpactMint. All rights reserved.</p>
+                        <p>&copy; 2025 ImpactMint. All rights reserved. Built with 💚 for the planet.</p>
                     </div>
                 </div>
             </footer>
