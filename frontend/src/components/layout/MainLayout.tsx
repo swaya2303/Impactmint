@@ -14,7 +14,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
             <div 
                 className={`transition-all duration-300 ${
-                    isSidebarOpen ? 'pl-64' : 'pl-20'
+                    isSidebarOpen ? 'pl-64' : 'pl-16'
                 }`}
             >
                 {children}
